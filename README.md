@@ -17,44 +17,7 @@ Here is the UML diagram and explanation formatted as Markdown to add to your Git
 
 # Components and Functions UML
 
-```mermaid
-classDiagram
-direction TB
-class Solution{
-    +max_profit(k: i32, prices: Vec<i32>) -> i32
-}
-
-class Traveler{
-    -transaction_count: i32
-    -profit: i64
-
-    +new()
-    +buy(price: i32)
-    +sell(price: i32)
-    +do_transaction(price: i32)
-    +get_profit() -> i64
-    +get_transaction_count() -> i32
-    +does_own_stock() -> bool
-}
-
-Solution ..> max_profit
-max_profit ..> max_profit()
-max_profit ..> fork_decisions()  
-max_profit ..> reduce_contestants()
-
-fork_decisions ..> Traveler
-reduce_contestants ..> Traveler
-is_left_worse_than_right_on_every_metric() ..> Traveler 
-
-Traveler ..> Traveler
-Traveler ..> new()
-Traveler ..> buy()
-Traveler ..> sell()
-Traveler ..> do_transaction()
-Traveler ..> get_profit()
-Traveler ..> get_transaction_count()
-Traveler ..> does_own_stock()
-```
+![Components and Functions UML](uml_diagram.png)
 
 The key components are:
 
