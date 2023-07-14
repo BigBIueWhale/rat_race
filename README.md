@@ -13,3 +13,57 @@
 \
 🦀 The elimination technique is a O(n^2) algorithm where n is the number of traders.
 # Blazingly fast 🚀🚀 (🚀🚀🚀)
+Here is the UML diagram and explanation formatted as Markdown to add to your GitHub README:
+
+# Components and Functions UML
+
+```mermaid
+classDiagram
+direction TB
+class Solution{
+    +max_profit(k: i32, prices: Vec<i32>) -> i32
+}
+
+class Traveler{
+    -transaction_count: i32
+    -profit: i64
+
+    +new()
+    +buy(price: i32)
+    +sell(price: i32)
+    +do_transaction(price: i32)
+    +get_profit() -> i64
+    +get_transaction_count() -> i32
+    +does_own_stock() -> bool
+}
+
+Solution ..> max_profit
+max_profit ..> max_profit()
+max_profit ..> fork_decisions()  
+max_profit ..> reduce_contestants()
+
+fork_decisions ..> Traveler
+reduce_contestants ..> Traveler
+is_left_worse_than_right_on_every_metric() ..> Traveler 
+
+Traveler ..> Traveler
+Traveler ..> new()
+Traveler ..> buy()
+Traveler ..> sell()
+Traveler ..> do_transaction()
+Traveler ..> get_profit()
+Traveler ..> get_transaction_count()
+Traveler ..> does_own_stock()
+```
+
+The key components are:
+
+- Solution - Contains the main max_profit function
+- Traveler - Represents a trader simulation, contains state and actions
+
+The main flow is:
+
+- max_profit() calls fork_decisions() and reduce_contestants() iteratively on a list of Travelers to simulate different buy/sell decisions
+- fork_decisions() clones and modifies Travelers to create new simulation states  
+- reduce_contestants() eliminates duplicate Traveler states
+- Helper functions like is_left_worse_than_right_on_every_metric() are used by reduce_contestants() to compare Travelers
